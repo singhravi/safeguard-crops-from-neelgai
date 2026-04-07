@@ -1,0 +1,1685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Crop Protection from Neelgai — Six-Layer Technology Architecture
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --green-deep: #0f3d1e;
+        --green-mid: #1b6b35;
+        --green-bright: #2d9e57;
+        --green-light: #a8e6bb;
+        --green-pale: #e8f7ed;
+        --amber: #d4820a;
+        --amber-light: #fef3dc;
+        --teal: #0d7a6e;
+        --teal-light: #d4f0ec;
+        --purple: #5b3fa8;
+        --purple-light: #ede9fb;
+        --blue: #1a5fa8;
+        --blue-light: #deeaf7;
+        --coral: #b8420a;
+        --coral-light: #fce8df;
+        --gray: #4a4a4a;
+        --gray-light: #f2f2f0;
+        --white: #fefefe;
+        --ink: #1a1a1a;
+        --ink-muted: #5a5a5a;
+        --border: rgba(0, 0, 0, 0.08);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.14);
+        --radius: 12px;
+        --radius-sm: 8px;
+        --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--green-deep);
+        color: var(--ink);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ── HERO ─────────────────────────────────────────────── */
+      .hero {
+        position: relative;
+        background: var(--green-deep);
+        padding: 80px 40px 60px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 20% 40%,
+            rgba(45, 158, 87, 0.18) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 50% 60% at 80% 60%,
+            rgba(13, 122, 110, 0.14) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--green-light);
+        border: 1px solid rgba(168, 230, 187, 0.35);
+        padding: 5px 16px;
+        border-radius: 100px;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.6s 0.1s forwards;
+      }
+
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2rem, 5vw, 3.6rem);
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.15;
+        max-width: 800px;
+        margin: 0 auto 20px;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.2s forwards;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--green-light);
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.55);
+        font-weight: 300;
+        max-width: 560px;
+        margin: 0 auto 48px;
+        line-height: 1.7;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.3s forwards;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.4s forwards;
+      }
+
+      .stat {
+        text-align: center;
+      }
+      .stat-num {
+        display: block;
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        color: var(--green-light);
+        line-height: 1;
+      }
+      .stat-label {
+        display: block;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      /* ── MAIN CONTENT ──────────────────────────────────────── */
+      .main {
+        background: #f7f8f5;
+        border-radius: 28px 28px 0 0;
+        margin-top: -1px;
+        padding: 64px 40px 80px;
+      }
+
+      .section-label {
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--green-mid);
+        margin-bottom: 48px;
+      }
+
+      /* ── LAYERS ───────────────────────────────────────────── */
+      .layers {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+      }
+
+      /* vertical spine */
+      .layers::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--green-bright),
+          transparent
+        );
+        transform: translateX(-50%);
+        pointer-events: none;
+        opacity: 0.15;
+      }
+
+      .layer {
+        position: relative;
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .layer.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .layer-inner {
+        border-radius: var(--radius);
+        border: 1.5px solid var(--border);
+        background: var(--white);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition),
+          transform var(--transition);
+      }
+      .layer-inner:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+
+      /* layer header */
+      .layer-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 24px;
+        cursor: pointer;
+        user-select: none;
+        border-bottom: 1.5px solid transparent;
+        transition: border-color var(--transition);
+      }
+      .layer-inner.open .layer-header {
+        border-bottom-color: var(--border);
+      }
+
+      .layer-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        padding: 3px 10px;
+        border-radius: 100px;
+        background: var(--gray-light);
+        color: var(--ink-muted);
+        flex-shrink: 0;
+        transition:
+          background var(--transition),
+          color var(--transition);
+      }
+
+      .layer-title-wrap {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .layer-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.2;
+      }
+
+      .layer-subtitle {
+        font-size: 12px;
+        color: var(--ink-muted);
+        margin-top: 2px;
+        font-weight: 300;
+      }
+
+      .layer-tag {
+        font-size: 11px;
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-weight: 500;
+        flex-shrink: 0;
+        letter-spacing: 0.02em;
+      }
+
+      .layer-chevron {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: var(--ink-muted);
+        transition: transform var(--transition);
+      }
+      .layer-inner.open .layer-chevron {
+        transform: rotate(180deg);
+      }
+
+      /* layer body */
+      .layer-body {
+        display: none;
+        padding: 24px;
+        gap: 12px;
+      }
+      .layer-inner.open .layer-body {
+        display: grid;
+      }
+
+      /* nodes grid */
+      .nodes {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+      }
+
+      .node-card {
+        border-radius: var(--radius-sm);
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        transition: all var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .node-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        opacity: 0;
+        transition: opacity var(--transition);
+      }
+      .node-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+      .node-card:hover::before {
+        opacity: 1;
+      }
+
+      .node-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1.3;
+        margin-bottom: 4px;
+      }
+      .node-desc {
+        font-size: 11px;
+        color: var(--ink-muted);
+        line-height: 1.5;
+        font-weight: 300;
+      }
+
+      /* layer-specific theming */
+      /* L1 teal */
+      .l1 .layer-header {
+        background: var(--teal-light);
+      }
+      .l1 .layer-num {
+        background: var(--teal);
+        color: #fff;
+      }
+      .l1 .layer-tag {
+        background: var(--teal-light);
+        color: var(--teal);
+      }
+      .l1 .node-card {
+        background: rgba(13, 122, 110, 0.04);
+      }
+      .l1 .node-card::before {
+        background: var(--teal);
+      }
+      .l1 .node-card:hover {
+        background: var(--teal-light);
+        border-color: var(--teal);
+      }
+
+      /* L2 amber */
+      .l2 .layer-header {
+        background: var(--amber-light);
+      }
+      .l2 .layer-num {
+        background: var(--amber);
+        color: #fff;
+      }
+      .l2 .layer-tag {
+        background: var(--amber-light);
+        color: var(--amber);
+      }
+      .l2 .node-card {
+        background: rgba(212, 130, 10, 0.04);
+      }
+      .l2 .node-card::before {
+        background: var(--amber);
+      }
+      .l2 .node-card:hover {
+        background: var(--amber-light);
+        border-color: var(--amber);
+      }
+
+      /* L3 purple */
+      .l3 .layer-header {
+        background: var(--purple-light);
+      }
+      .l3 .layer-num {
+        background: var(--purple);
+        color: #fff;
+      }
+      .l3 .layer-tag {
+        background: var(--purple-light);
+        color: var(--purple);
+      }
+      .l3 .node-card {
+        background: rgba(91, 63, 168, 0.04);
+      }
+      .l3 .node-card::before {
+        background: var(--purple);
+      }
+      .l3 .node-card:hover {
+        background: var(--purple-light);
+        border-color: var(--purple);
+      }
+
+      /* L4 blue */
+      .l4 .layer-header {
+        background: var(--blue-light);
+      }
+      .l4 .layer-num {
+        background: var(--blue);
+        color: #fff;
+      }
+      .l4 .layer-tag {
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+      .l4 .node-card {
+        background: rgba(26, 95, 168, 0.04);
+      }
+      .l4 .node-card::before {
+        background: var(--blue);
+      }
+      .l4 .node-card:hover {
+        background: var(--blue-light);
+        border-color: var(--blue);
+      }
+
+      /* L5 coral */
+      .l5 .layer-header {
+        background: var(--coral-light);
+      }
+      .l5 .layer-num {
+        background: var(--coral);
+        color: #fff;
+      }
+      .l5 .layer-tag {
+        background: var(--coral-light);
+        color: var(--coral);
+      }
+      .l5 .node-card {
+        background: rgba(184, 66, 10, 0.04);
+      }
+      .l5 .node-card::before {
+        background: var(--coral);
+      }
+      .l5 .node-card:hover {
+        background: var(--coral-light);
+        border-color: var(--coral);
+      }
+
+      /* L6 green */
+      .l6 .layer-header {
+        background: var(--green-pale);
+      }
+      .l6 .layer-num {
+        background: var(--green-mid);
+        color: #fff;
+      }
+      .l6 .layer-tag {
+        background: var(--green-pale);
+        color: var(--green-mid);
+      }
+      .l6 .node-card {
+        background: rgba(27, 107, 53, 0.04);
+      }
+      .l6 .node-card::before {
+        background: var(--green-mid);
+      }
+      .l6 .node-card:hover {
+        background: var(--green-pale);
+        border-color: var(--green-mid);
+      }
+
+      /* ── CONNECTOR ARROWS between layers ───────────────────── */
+      .connector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 0;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .connector.visible {
+        opacity: 1;
+      }
+      .connector-line {
+        flex: 1;
+        max-width: 120px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--green-bright),
+          transparent
+        );
+      }
+      .connector-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--green-bright);
+        white-space: nowrap;
+      }
+      .connector-arrow {
+        color: var(--green-bright);
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      /* ── DETAIL DRAWER ─────────────────────────────────────── */
+      .drawer-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 61, 30, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .drawer-backdrop.open {
+        display: block;
+      }
+      .drawer-backdrop.visible {
+        opacity: 1;
+      }
+
+      .drawer {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: min(480px, 100vw);
+        background: var(--white);
+        z-index: 101;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-lg);
+      }
+      .drawer.open {
+        transform: none;
+      }
+
+      .drawer-header {
+        padding: 28px 28px 20px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .drawer-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+
+      .drawer-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.25;
+        flex: 1;
+      }
+
+      .drawer-close {
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: var(--gray-light);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-muted);
+        flex-shrink: 0;
+        transition: background var(--transition);
+      }
+      .drawer-close:hover {
+        background: #e0e0de;
+      }
+
+      .drawer-body {
+        padding: 24px 28px;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .drawer-section {
+        margin-bottom: 24px;
+      }
+      .drawer-section-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        margin-bottom: 10px;
+      }
+      .drawer-text {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--ink);
+        font-weight: 300;
+      }
+      .drawer-text strong {
+        font-weight: 500;
+        color: var(--ink);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .pill {
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 100px;
+        border: 1px solid var(--border);
+        color: var(--ink-muted);
+        font-weight: 400;
+      }
+
+      /* ── FLOW DIAGRAM mini ─────────────────────────────────── */
+      .flow-mini {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        padding: 14px 16px;
+        background: var(--gray-light);
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        color: var(--ink-muted);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .flow-step {
+        padding: 3px 10px;
+        border-radius: 4px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        color: var(--ink);
+        white-space: nowrap;
+      }
+      .flow-arr {
+        color: var(--green-bright);
+        font-size: 14px;
+      }
+
+      /* ── FOOTER / LEGEND ───────────────────────────────────── */
+      .legend-strip {
+        max-width: 960px;
+        margin: 48px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        justify-content: center;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--ink-muted);
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .footer {
+        background: var(--green-deep);
+        text-align: center;
+        padding: 32px 24px;
+        margin-top: 0;
+      }
+      .footer p {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.06em;
+      }
+      .footer strong {
+        color: var(--green-light);
+        font-weight: 400;
+      }
+
+      /* ── ANIMATIONS ────────────────────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 60px 20px 40px;
+        }
+        .main {
+          padding: 40px 16px 60px;
+        }
+        .hero-stats {
+          gap: 28px;
+        }
+        .nodes {
+          grid-template-columns: 1fr 1fr;
+        }
+        .drawer {
+          width: 100vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════ HERO ══════════════ -->
+    <section class="hero">
+      <div class="hero-badge">Research Paper Demo · Uttar Pradesh · 2026</div>
+      <h1>
+        Safeguarding the Harvest:<br /><em>Crop Protection from Neelgai</em>
+      </h1>
+      <p class="hero-sub">
+        An integrated six-layer technology and policy architecture for
+        protecting UP's 18 million farming households from Neelgai depredation.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">2.3L</span
+          ><span class="stat-label">Neelgai in UP</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">6</span
+          ><span class="stat-label">Defence layers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">90%</span
+          ><span class="stat-label">Protection rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">18M</span
+          ><span class="stat-label">Farm households</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ MAIN ══════════════ -->
+    <main class="main">
+      <p class="section-label">
+        click any layer to expand · click any component to explore
+      </p>
+
+      <div class="layers" id="layers">
+        <!-- L1 -->
+        <div class="layer l1" data-delay="0">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L1</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">Field perimeter detection</div>
+                <div class="layer-subtitle">
+                  Continuous boundary monitoring, 24 hours
+                </div>
+              </div>
+              <span class="layer-tag">Detection</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'PIR motion sensor',
+                      'Detection',
+                      '#0d7a6e',
+                      'HC-SR501 module positioned at 15–20 m intervals around the field perimeter. Detects the thermal signature of large animal movement and wakes the microcontroller within milliseconds.',
+                      'How it works,Placement,Sensitivity,Power',
+                      'Passive infrared detection,15–20 m boundary spacing,120–240 kg body mass trigger,Solar-powered; always on',
+                      'PIR fires → ESP32 wakes → camera activates → classification runs → alert or suppress',
+                    )
+                  "
+                >
+                  <div class="node-name">PIR motion sensor</div>
+                  <div class="node-desc">
+                    HC-SR501 · 15–20 m spacing · boundary perimeter
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'AI edge camera',
+                      'Detection',
+                      '#0d7a6e',
+                      'OV2640 camera running a TensorFlow Lite MobileNetV2 model on the ESP32-S3. Classifies detected movement as Neelgai, cattle, human, or small animal — reducing false alerts by 70–80%.',
+                      'Classification,Accuracy,Training,Speed',
+                      'Neelgai / cattle / human / small,85–92% in daylight; 70–80% night,Fine-tuned at KVK with local images,200–800 ms inference time',
+                      'PIR triggers → camera captures frame → TF Lite classifies → decision: alert or suppress',
+                    )
+                  "
+                >
+                  <div class="node-name">AI edge camera</div>
+                  <div class="node-desc">
+                    OV2640 + TF Lite · animal classification at edge
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'ESP32-S3 node',
+                      'Detection',
+                      '#0d7a6e',
+                      'Central brain of the sensor node. Coordinates PIR input, camera inference, relay activation, and GSM alert dispatch. Wi-Fi for data logging, GSM for SMS/WhatsApp alerts even without internet.',
+                      'Functions,Connectivity,Power,Form factor',
+                      'PIR coordinator + inference host + relay driver,Wi-Fi 802.11b/g/n + GSM 4G,Solar panel + 10 Ah LiPo battery,IP65 weatherproof enclosure',
+                      'Sensor input → inference → decision → relay trigger + GSM alert dispatch',
+                    )
+                  "
+                >
+                  <div class="node-name">ESP32-S3 node</div>
+                  <div class="node-desc">
+                    Wi-Fi + GSM · solar + LiPo · IP65 enclosure
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'LoRaWAN mesh',
+                      'Detection',
+                      '#0d7a6e',
+                      'For villages with poor 4G coverage. LoRa modules on each sensor node form a mesh that relays alerts across up to 5 km without cellular dependency. A single gateway uploads aggregated data when connectivity is available.',
+                      'Coverage,Range,Topology,Use case',
+                      '5 km node-to-node relay,Up to 15 km gateway range,Self-healing mesh topology,Bundelkhand + remote Terai zones',
+                      'Node fires → LoRa mesh relays → gateway → cloud + GSM bridge',
+                    )
+                  "
+                >
+                  <div class="node-name">LoRaWAN mesh</div>
+                  <div class="node-desc">
+                    Offline relay network · low-connectivity zones
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" data-delay="50">
+          <div class="connector-line"></div>
+          <span class="connector-arrow">↓</span>
+          <span class="connector-label">detects → triggers</span>
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- L2 -->
+        <div class="layer l2" data-delay="100">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L2</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">Automated deterrence</div>
+                <div class="layer-subtitle">
+                  Response within 1 second of detection
+                </div>
+              </div>
+              <span class="layer-tag">Deterrence</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Bioacoustic speaker',
+                      'Deterrence',
+                      '#d4820a',
+                      'Plays rotating predator call recordings — tiger, wild dog, Himalayan black bear, leopard — triggered by the sensor relay. Rotation through 8–12 different calls prevents habituation, which defeats single-call devices within 2–3 weeks.',
+                      'Sound library,Volume,Rotation,Housing',
+                      '8–12 predator call types rotated randomly,85–100 dB at 5 metres minimum,Random selection prevents habituation,IP65 weatherproof speaker + amplifier',
+                      'Relay fires → random call selected → amplifier plays → Neelgai startle response',
+                    )
+                  "
+                >
+                  <div class="node-name">Bioacoustic speaker</div>
+                  <div class="node-desc">
+                    Predator calls · 8–12 rotating types · IP65 rated
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Solar LED flasher',
+                      'Deterrence',
+                      '#d4820a',
+                      'Irregular high-intensity LED flashing units. Neelgai have rod-dominated retinas — their night vision is 6× more sensitive than humans, making sudden bright light strongly aversive. Irregular pulse patterns prevent adaptation.',
+                      'Why it works,Pattern,Power,Product',
+                      'Rod-dominated retinas; 6× human night sensitivity,Irregular pulse — not fixed rhythm,Solar recharged during day; full night use,Parabraksh (Made in India) or equivalent',
+                      'PIR trigger → relay → irregular flash sequence begins → sustained until manual reset',
+                    )
+                  "
+                >
+                  <div class="node-name">Solar LED flasher</div>
+                  <div class="node-desc">
+                    Irregular pulse · night-optimised · solar powered
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Nylon net fence',
+                      'Deterrence',
+                      '#d4820a',
+                      'The single most effective Neelgai deterrent confirmed by Wildlife Institute of India field trials. 90–95% protection rate. A 2-metre HDPE net with outward-angled top section provides a physical barrier that works regardless of animal behaviour or habituation.',
+                      'Effectiveness,Specification,Installation,Lifespan',
+                      '90–95% protection (WII field trials),2 m HDPE; top 30 cm angled outward at 45°,Metal stakes every 3 m; critical in alluvial soils,8–12 years with basic maintenance',
+                      'Neelgai approaches → net prevents entry regardless of deterrence response',
+                    )
+                  "
+                >
+                  <div class="node-name">Nylon net fence</div>
+                  <div class="node-desc">
+                    2 m HDPE · 90–95% protection · WII field-tested
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Chemical repellent',
+                      'Deterrence',
+                      '#d4820a',
+                      'Neelbo and similar chemical repellents applied to boundary posts and field edges. Effective for 10–15 days as a supplement layer. Best used during peak vulnerability periods — crop grain-fill and pre-harvest stages — rather than as a season-long primary deterrent.',
+                      'Product,Duration,Use case,Limitation',
+                      'Neelbo spray; horse / bear faecal solution,10–15 days per application,Supplement during grain-fill and pre-harvest,Rapid habituation if used alone; not standalone',
+                      'Sensor trigger → farmer alerted → manual reapplication of repellent at boundary posts',
+                    )
+                  "
+                >
+                  <div class="node-name">Chemical repellent</div>
+                  <div class="node-desc">
+                    Neelbo spray · 10–15 days · supplement layer
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" data-delay="150">
+          <div class="connector-line"></div>
+          <span class="connector-arrow">↓</span>
+          <span class="connector-label">alerts farmer</span>
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- L3 -->
+        <div class="layer l3" data-delay="200">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L3</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">Communication and data hub</div>
+                <div class="layer-subtitle">
+                  Instant farmer alerts · incident logging · herd tracking
+                </div>
+              </div>
+              <span class="layer-tag">Communication</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'GSM / 4G alert',
+                      'Communication',
+                      '#5b3fa8',
+                      'The ESP32 GSM module dispatches an SMS and WhatsApp message to the farmer within seconds of a confirmed Neelgai detection. Message includes sensor GPS location and timestamp. Can also post to the village WhatsApp group automatically.',
+                      'Message content,Delivery time,Coverage,Backup',
+                      'GPS location + time + sensor ID,Under 10 seconds from PIR trigger,Works on any 2G/4G signal,LoRaWAN bridge in zero-signal zones',
+                      'Sensor confirms Neelgai → GSM fires → SMS + WhatsApp to farmer + village group',
+                    )
+                  "
+                >
+                  <div class="node-name">GSM / 4G alert</div>
+                  <div class="node-desc">
+                    SMS + WhatsApp · instant notification · auto-post
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'BharatNet / 4G',
+                      'Communication',
+                      '#5b3fa8',
+                      'Government rural broadband infrastructure now covering 80%+ of UP gram panchayats. Enables Wi-Fi sensor data logging, OTA firmware updates for all nodes, and real-time video streaming from drone patrols to the village monitoring dashboard.',
+                      'Coverage,Use in system,Benefit,Gap',
+                      '80%+ UP villages covered,Sensor logging + OTA updates + drone stream,Eliminates per-sensor SIM costs where available,Remaining 20% covered by LoRaWAN mesh',
+                      'Sensor triggers → data pushed via BharatNet Wi-Fi → cloud dashboard updated in real time',
+                    )
+                  "
+                >
+                  <div class="node-name">BharatNet / 4G</div>
+                  <div class="node-desc">
+                    Rural broadband · 80%+ UP villages · OTA updates
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Cloud dashboard',
+                      'Communication',
+                      '#5b3fa8',
+                      'All sensor events logged to a shared Google Sheet or lightweight village app. Records timestamp, GPS, sensor ID, and photo thumbnail. This incident log is the primary evidence base for PMFBY wildlife damage claims under Kharif 2026 coverage.',
+                      'Platform,Data captured,Key use,Access',
+                      'Google Sheets + Google My Maps (free),Time, GPS, sensor ID, photo thumbnail,PMFBY Kharif 2026 insurance evidence,All village farmers + FPO committee',
+                      'Sensor fires → data logged → incident record created → PMFBY evidence accumulated',
+                    )
+                  "
+                >
+                  <div class="node-name">Cloud dashboard</div>
+                  <div class="node-desc">
+                    Incident log + map · PMFBY evidence · free tools
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'GPS herd map',
+                      'Communication',
+                      '#5b3fa8',
+                      'Cumulative GPS map of all Neelgai sightings plotted on Google My Maps. Over weeks, this reveals which approach corridors are used most frequently and at what times — allowing the village to concentrate deterrence resources where raids are most likely.',
+                      'Tool,Data source,Insight produced,Update frequency',
+                      'Google My Maps (free); pin-sharing via WhatsApp,Farmer-reported sightings + drone GPS,High-risk corridors + peak raid time windows,Real-time as sightings are shared',
+                      'Sighting reported → GPS pin dropped → map updated → corridor patterns emerge',
+                    )
+                  "
+                >
+                  <div class="node-name">GPS herd map</div>
+                  <div class="node-desc">
+                    Movement patterns · corridor tracking · risk mapping
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" data-delay="250">
+          <div class="connector-line"></div>
+          <span class="connector-arrow">↓</span>
+          <span class="connector-label">feeds surveillance</span>
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- L4 -->
+        <div class="layer l4" data-delay="300">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L4</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">Aerial and ground surveillance</div>
+                <div class="layer-subtitle">
+                  Wide-area early warning · herd tracking
+                </div>
+              </div>
+              <span class="layer-tag">Surveillance</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'FPO drone patrol',
+                      'Surveillance',
+                      '#1a5fa8',
+                      'Agricultural drone flying pre-programmed waypoints around the village crop boundary at dawn and dusk — the two windows when Neelgai most commonly move toward fields. Spots approaching herds 10–20 minutes before they reach the perimeter, giving farmers critical lead time.',
+                      'Coverage,Flight schedule,Detection,Model',
+                      '50–100 acres per 15–20 min flight,Dawn (5–6 AM) and dusk (6–7 PM) daily,Visual herd detection from 30–50 m altitude,FPO-owned; 40–50% SMAM subsidy',
+                      'Pre-planned route → pilot observes live feed → herd spotted → GPS pin + WhatsApp alert',
+                    )
+                  "
+                >
+                  <div class="node-name">FPO drone patrol</div>
+                  <div class="node-desc">
+                    Dawn + dusk sweeps · 50–100 ac per flight · SMAM
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Thermal FLIR camera',
+                      'Surveillance',
+                      '#1a5fa8',
+                      'FLIR thermal attachment on the drone detects Neelgai by heat signature at night — the period when 70–80% of crop raids occur. A 120–240 kg Neelgai produces a strong thermal bloom against cooler crop canopy, visible at 40–60 m drone altitude in complete darkness.',
+                      'Detection method,Altitude,Effectiveness,Use window',
+                      'Body heat signature vs cooler crop background,40–60 m optimal for ID + herd count,Strong signal; 120–240 kg body mass,6 PM–6 AM when ground sensors bear full load',
+                      'Drone ascends at dusk → FLIR enabled → thermal blobs identified → count + direction logged',
+                    )
+                  "
+                >
+                  <div class="node-name">Thermal FLIR cam</div>
+                  <div class="node-desc">
+                    Night heat signature · 40–60 m altitude · herd count
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'GPS herd collars',
+                      'Surveillance',
+                      '#1a5fa8',
+                      'GPS collars fitted on alpha females of identified repeat-offending Neelgai herds transmit real-time location via GSM. When a collared animal approaches farmland, an automated geo-fence alert fires to the village group. Requires Forest Department partnership as a district pilot programme.',
+                      'How it works,Alert trigger,Partnership needed,Best districts',
+                      'GPS + GSM collar on herd alpha females,Geo-fence alert when collar enters farm zone,State Forest Department collaboration,Lakhimpur Kheri, Bahraich, Kaushambi pilot',
+                      'Collar crosses geo-fence → cloud alert → auto WhatsApp message → village group notified',
+                    )
+                  "
+                >
+                  <div class="node-name">GPS herd collars</div>
+                  <div class="node-desc">
+                    Real-time location · geo-fence alerts · Forest Dept. pilot
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Namo Drone Didi SHG',
+                      'Surveillance',
+                      '#1a5fa8',
+                      'Women Self-Help Groups receiving drones under the government Namo Drone Didi scheme (Rs. 1,261 crore; 15,000 SHGs; 80% subsidy up to Rs. 8 lakh). Primary mandate is pesticide/fertilizer spraying, but the same drone and DGCA-certified pilot can provide paid village patrol services during Neelgai season.',
+                      'Scheme details,Income,Training,How to access',
+                      'Central scheme; 80% subsidy up to Rs. 8 lakh,Minimum Rs. 1 lakh/year additional income for SHG,15-day training; DGCA Remote Pilot Certificate,Apply via DAY-NRLM / District Agriculture Officer',
+                      'SHG schedules patrol flight → live feed to phone → sighting shared → village alerted',
+                    )
+                  "
+                >
+                  <div class="node-name">Namo Drone Didi SHG</div>
+                  <div class="node-desc">
+                    SHG-operated · DGCA certified · paid village service
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" data-delay="350">
+          <div class="connector-line"></div>
+          <span class="connector-arrow">↓</span>
+          <span class="connector-label">informs community</span>
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- L5 -->
+        <div class="layer l5" data-delay="400">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L5</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">
+                  Community response and documentation
+                </div>
+                <div class="layer-subtitle">
+                  Village coordination · insurance evidence · FPO action
+                </div>
+              </div>
+              <span class="layer-tag">Community</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'WhatsApp GPS alert',
+                      'Community',
+                      '#b8420a',
+                      'Structured village WhatsApp group for real-time Neelgai sighting alerts. Zero cost. Deployable in 48 hours. Volunteers share GPS location pins when sightings occur, enabling neighbouring farmers to prepare before the herd reaches their boundary.',
+                      'Setup time,Cost,Protocol,Coverage',
+                      '48 hours from decision to live,Zero cost; uses existing smartphones,GPS pin + voice note: direction + herd size,Entire village cluster; cross-boundary alerts',
+                      'Sighting occurs → GPS pin shared → voice note description → farmers in path prepare',
+                    )
+                  "
+                >
+                  <div class="node-name">WhatsApp GPS alert</div>
+                  <div class="node-desc">
+                    Zero cost · 48-hr setup · GPS pin sharing protocol
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'PMFBY Crop App',
+                      'Community',
+                      '#b8420a',
+                      'From Kharif 2026, the PMFBY Crop Insurance App is the official channel for reporting Neelgai crop damage. Farmers must report within 72 hours of damage with geotagged photographs. The cloud dashboard (Layer 3) automatically prepares the evidence record farmers need for this step.',
+                      'Coverage from,Reporting window,Evidence required,Key action now',
+                      'Kharif 2026 season onwards,72 hours from damage event,Geotagged photographs via the app,Download app now; practise before Kharif 2026',
+                      'Damage occurs → app opened → geotagged photo uploaded → claim submitted within 72 hrs',
+                    )
+                  "
+                >
+                  <div class="node-name">PMFBY Crop App</div>
+                  <div class="node-desc">
+                    Kharif 2026 · 72-hr window · geotagged evidence
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'Damage dashboard',
+                      'Community',
+                      '#b8420a',
+                      'Season-on-season damage log maintained on Google My Maps and Google Sheets. Each incident records date, location, crop type, estimated loss, and photo. Over two to three seasons this becomes a powerful advocacy document for PMFBY vulnerable district listing and Section 62 applications.',
+                      'Tool,Data fields,Strategic value,Update cycle',
+                      'Google My Maps + Sheets (free),Date, location, crop, estimated loss, photo,PMFBY vulnerable district application evidence,After every incident; weekly summary',
+                      'Incident occurs → logged in Sheets → pin added to My Maps → district officer presented annually',
+                    )
+                  "
+                >
+                  <div class="node-name">Damage dashboard</div>
+                  <div class="node-desc">
+                    Season log · advocacy evidence · district officer ready
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'FPO night watch roster',
+                      'Community',
+                      '#b8420a',
+                      'Rotating 2–3 person watch schedule among FPO member farmers during critical crop stages (grain-fill through pre-harvest). Sensor alerts wake the on-duty watchers rather than requiring all farmers to stay up. Technology replaces constant vigilance; humans handle confirmed alerts.',
+                      'Schedule,Trigger,Crop stages,Benefit',
+                      'Rotating 2-3 farmer roster per night,Sensor GSM alert wakes duty farmers,Grain-fill through pre-harvest; Oct–Mar peak,Farmers sleep; sensor works; humans respond to real alerts',
+                      'Sensor confirms Neelgai → SMS fires to duty roster → watch farmers respond + activate deterrents',
+                    )
+                  "
+                >
+                  <div class="node-name">FPO night watch roster</div>
+                  <div class="node-desc">
+                    Rotating duty · sensor-activated · Oct–Mar peak
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector" data-delay="450">
+          <div class="connector-line"></div>
+          <span class="connector-arrow">↓</span>
+          <span class="connector-label">enables claims</span>
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- L6 -->
+        <div class="layer l6" data-delay="500">
+          <div class="layer-inner" onclick="toggleLayer(this)">
+            <div class="layer-header">
+              <span class="layer-num">L6</span>
+              <div class="layer-title-wrap">
+                <div class="layer-title">Policy and financial safety net</div>
+                <div class="layer-subtitle">
+                  Government schemes · insurance · training
+                </div>
+              </div>
+              <span class="layer-tag">Policy</span>
+              <svg
+                class="layer-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+            <div class="layer-body" style="grid-template-columns: 1fr">
+              <div class="nodes">
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'PMFBY 2026',
+                      'Policy',
+                      '#1b6b35',
+                      'Pradhan Mantri Fasal Bima Yojana now covers crop loss from wild animal attacks including Neelgai from Kharif 2026. Classified as the fifth Add-on Cover under Localised Risk. States must notify vulnerable districts; farmers must report losses within 72 hours via the Crop Insurance App with geotagged photos.',
+                      'Coverage from,Animals covered,Reporting,Access',
+                      'Kharif 2026 season,Neelgai, elephants, wild boars, deer, monkeys,72-hr app-based with geotagged photos,Block Agriculture Office + Crop Insurance App',
+                      'Damage → 72-hr app report → PMFBY claim assessed → compensation paid to farmer account',
+                    )
+                  "
+                >
+                  <div class="node-name">PMFBY 2026</div>
+                  <div class="node-desc">
+                    Wildlife damage cover · Kharif 2026 · 72-hr app claim
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'MGNREGS',
+                      'Policy',
+                      '#1b6b35',
+                      'Mahatma Gandhi National Rural Employment Guarantee Scheme funds the installation labour for nylon net fencing as village community infrastructure. The Gram Panchayat passes a resolution, the material is procured through government channels, and MGNREGS wages pay for the physical installation work.',
+                      'What it funds,Process,Benefit,Contact',
+                      'Nylon net fence installation labour,Gram Sabha resolution → Panchayat procurement → MGNREGS labour payment,Zero cost to individual farmer for labour component,Gram Pradhan + Block Development Officer',
+                      'GP resolution passed → BDO approves → material procured → MGNREGS workers install fence',
+                    )
+                  "
+                >
+                  <div class="node-name">MGNREGS</div>
+                  <div class="node-desc">
+                    Fence labour funding · Gram Sabha resolution · BDO
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'SMAM drone subsidy',
+                      'Policy',
+                      '#1b6b35',
+                      'Sub-Mission on Agricultural Mechanization provides 40–50% capital subsidy on agricultural drone purchase for Farmer Producer Organisations and Cooperatives. Combined with the Namo Drone Didi scheme for SHGs, this makes drone surveillance economically viable for village-level deployment.',
+                      'Subsidy rate,Eligible applicants,Process,Contact',
+                      '40–50% of drone purchase cost,FPOs, cooperatives, and farmer groups,Application through District Agriculture Officer,DAO office; SMAM portal',
+                      'FPO applies → DAO verifies → subsidy sanctioned → drone procured at reduced cost',
+                    )
+                  "
+                >
+                  <div class="node-name">SMAM drone subsidy</div>
+                  <div class="node-desc">
+                    40–50% subsidy · FPOs eligible · District Agri Officer
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'RKVY grants',
+                      'Policy',
+                      '#1b6b35',
+                      'Rashtriya Krishi Vikas Yojana provides grant funding for village-level agricultural technology pilot projects. An FPO can apply for RKVY funding to cover the capital cost of sensor nodes, bioacoustic devices, and cloud dashboard setup as a documented pilot — which also generates the evidence data needed for broader scheme rollout.',
+                      'Funding type,Eligible costs,Application,Contact',
+                      'Project grant; no repayment,Sensor nodes, deterrent systems, tech setup,Through District Project Director RKVY,District Collector office + State Agriculture Dept',
+                      'Pilot proposal submitted → DPD reviews → grant approved → technology deployed + monitored',
+                    )
+                  "
+                >
+                  <div class="node-name">RKVY grants</div>
+                  <div class="node-desc">
+                    Village tech pilot · project grant · District Proj. Director
+                  </div>
+                </div>
+                <div
+                  class="node-card"
+                  onclick="
+                    openDrawer(
+                      event,
+                      'KVK training',
+                      'Policy',
+                      '#1b6b35',
+                      'Krishi Vigyan Kendra — 57 centres operational across UP\'s 75 districts. Provides free technology demonstrations, sensor assembly workshops, drone operation training, and AI model fine-tuning using locally collected Neelgai images. The primary technology transfer bridge between research institutions and village-level implementation.',
+                      'Coverage,Services offered,Key role in INPS,Access',
+                      '57 KVKs across UP; one per 1–2 districts,Sensor assembly, drone training, AI model update,Collects local Neelgai images for TF Lite retraining,Walk-in; free of charge; contact ICAR website',
+                      'KVK runs workshop → farmers assemble nodes → AI model updated → deployed to fields',
+                    )
+                  "
+                >
+                  <div class="node-name">KVK training</div>
+                  <div class="node-desc">
+                    57 centres in UP · free workshops · AI model updates
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /layers -->
+
+      <!-- legend -->
+      <div class="legend-strip">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #0d7a6e"></div>
+          Detection
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #d4820a"></div>
+          Deterrence
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #5b3fa8"></div>
+          Communication
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #1a5fa8"></div>
+          Surveillance
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #b8420a"></div>
+          Community
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: #1b6b35"></div>
+          Policy
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>
+        <strong
+          >Safeguarding the Harvest from Neelgai Using the Technology, Community
+          and Govt Policies</strong
+        >
+        ·
+      </p>
+    </footer>
+
+    <!-- ══════════════ DRAWER ══════════════ -->
+    <div class="drawer-backdrop" id="backdrop" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+      <div class="drawer-header">
+        <div class="drawer-dot" id="drawer-dot"></div>
+        <div class="drawer-title" id="drawer-title">Component</div>
+        <button class="drawer-close" onclick="closeDrawer()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </div>
+
+    <script>
+      /* ── scroll-reveal ── */
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const delay = parseInt(e.target.dataset.delay || 0);
+              setTimeout(() => e.target.classList.add("visible"), delay);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".layer, .connector")
+        .forEach((el) => observer.observe(el));
+
+      /* ── expand/collapse ── */
+      function toggleLayer(inner) {
+        const isOpen = inner.classList.contains("open");
+        document.querySelectorAll(".layer-inner.open").forEach((el) => {
+          if (el !== inner) el.classList.remove("open");
+        });
+        inner.classList.toggle("open", !isOpen);
+      }
+
+      /* ── drawer ── */
+      function openDrawer(
+        e,
+        title,
+        layer,
+        color,
+        desc,
+        labelsStr,
+        valuesStr,
+        flowStr,
+      ) {
+        e.stopPropagation();
+
+        const labels = labelsStr.split(",");
+        const values = valuesStr.split(",");
+        const flowSteps = flowStr.split("→");
+
+        document.getElementById("drawer-title").textContent = title;
+        document.getElementById("drawer-dot").style.background = color;
+
+        let html = "";
+
+        // layer badge
+        html += `<div class="drawer-section">
+    <div class="pill-row">
+      <span class="pill" style="background:${color}18;border-color:${color}40;color:${color}">${layer}</span>
+    </div>
+  </div>`;
+
+        // description
+        html += `<div class="drawer-section">
+    <div class="drawer-section-title">Overview</div>
+    <div class="drawer-text">${desc}</div>
+  </div>`;
+
+        // key facts
+        if (labels.length > 0) {
+          html += `<div class="drawer-section">
+      <div class="drawer-section-title">Key facts</div>`;
+          labels.forEach((label, i) => {
+            html += `<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:baseline;">
+        <div style="font-size:11px;color:var(--ink-muted);font-family:'JetBrains Mono',monospace;min-width:110px;flex-shrink:0;">${label.trim()}</div>
+        <div style="font-size:13px;color:var(--ink);font-weight:400;">${(values[i] || "").trim()}</div>
+      </div>`;
+          });
+          html += "</div>";
+        }
+
+        // signal flow
+        if (flowSteps.length > 1) {
+          html += `<div class="drawer-section">
+      <div class="drawer-section-title">Signal flow</div>
+      <div class="flow-mini">`;
+          flowSteps.forEach((step, i) => {
+            html += `<span class="flow-step">${step.trim()}</span>`;
+            if (i < flowSteps.length - 1)
+              html += `<span class="flow-arr">→</span>`;
+          });
+          html += `</div></div>`;
+        }
+
+        document.getElementById("drawer-body").innerHTML = html;
+
+        const backdrop = document.getElementById("backdrop");
+        const drawer = document.getElementById("drawer");
+        backdrop.style.display = "block";
+        requestAnimationFrame(() => {
+          backdrop.classList.add("visible");
+          drawer.classList.add("open");
+        });
+      }
+
+      function closeDrawer() {
+        const backdrop = document.getElementById("backdrop");
+        const drawer = document.getElementById("drawer");
+        backdrop.classList.remove("visible");
+        drawer.classList.remove("open");
+        setTimeout(() => {
+          backdrop.style.display = "none";
+          backdrop.classList.remove("open");
+        }, 320);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeDrawer();
+      });
+    </script>
+  </body>
+</html>
